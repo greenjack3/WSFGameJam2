@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ReviveButton : MonoBehaviour {
+public class ReviveButton : MonoBehaviour,IPointerClickHandler {
+	#region IPointerClickHandler implementation
 
-	// Use this for initialization
-	void Start () {
-		
+	public void OnPointerClick (PointerEventData eventData)
+	{
+		BearScript.RevivePlayer ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+	#endregion
+
+
+
+
 }
