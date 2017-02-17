@@ -22,6 +22,8 @@ public class FloeScript : MonoBehaviour
     public float maxTorqueTime;
     public float minTorqueTime;
 
+    bool shouldReturn;
+
     float timeToForce;
     float timeToTorque;
 
@@ -29,6 +31,7 @@ public class FloeScript : MonoBehaviour
 
     void Start()
     {
+        shouldReturn = false;
         body = GetComponent<Rigidbody>();
         upForceTimeLeft = upForceTime;
         timeToForce = Random.Range(minTime, maxTime);
@@ -55,7 +58,13 @@ public class FloeScript : MonoBehaviour
         {
             float torque = Random.Range(minTorque, maxTorque);
             body.AddTorque(0, 0, torque);
+            shouldReturn = true;
             timeToTorque = Random.Range(minTorqueTime, maxTorqueTime);
+        }
+
+        if (shouldReturn)
+        {
+            //transform.
         }
 
         upForceTimeLeft -= Time.deltaTime;
