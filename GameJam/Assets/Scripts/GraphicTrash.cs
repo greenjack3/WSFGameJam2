@@ -18,12 +18,18 @@ public class GraphicTrash : MonoBehaviour
     float wobbleSpeed;
     float forwardSpeed;
 
+    public bool underseaFlag;
+    public float maxLifeTime;
+    public float minLifeTime;
+    float lifeTime;
+
     void OnEnable()
     {
         maxY = transform.position.y + maxYdiff;
         minY = transform.position.y - minYdiff;
         wobbleSpeed = Random.Range(minWobbleSpeed, maxWobbleSpeed);
         forwardSpeed = Random.Range(minForwardSpeed, maxForwardSpeed);
+        lifeTime = Random.Range(minLifeTime, maxLifeTime);
     }
 
     void Update()
@@ -34,6 +40,20 @@ public class GraphicTrash : MonoBehaviour
 			((c * Mathf.Sin (wobbleSpeed * Time.time) + (c + minY))),
 			transform.position.z);
 
+        lifeTime -= Time.deltaTime;
 
+        if (lifeTime <= 0 && underseaFlag)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * -wobbleSpeed);
+        }
+
+        if (transform.position.x <= -20 || transform.position.x >= 20)
+        {
+            this.Recycle();
+        }
+        if (transform.position.y <= -10)
+        {
+            this.Recycle();
+        }
     }
 }
