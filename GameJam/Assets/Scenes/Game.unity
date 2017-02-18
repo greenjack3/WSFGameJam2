@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -564,6 +564,11 @@ Prefab:
       value: 
       objectReference: {fileID: 13400000, guid: db91f0a26174944c5acff52a7d0edd25,
         type: 2}
+    - target: {fileID: 54225703702551248, guid: a4866e9357ea943f39817a5370400773,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4866e9357ea943f39817a5370400773, type: 2}
   m_IsPrefabParent: 0
@@ -588,12 +593,14 @@ MonoBehaviour:
   minPosY: -0.55
   maxDownForce: -4
   minDownForce: -10
-  maxTorque: 0
-  minTorque: 0
+  maxTorque: 1
+  minTorque: -1
+  maxAngle: 0
   maxTime: 3
   minTime: 1
-  maxTorqueTime: 0
-  minTorqueTime: 0
+  maxTorqueTime: 2
+  minTorqueTime: 0.3
+  returnDamping: 0.99
 --- !u!1 &1361377561
 GameObject:
   m_ObjectHideFlags: 0
