@@ -8,6 +8,7 @@ public class FloeScript : MonoBehaviour
     public float upForce;
     public float upForceTime;
     float upForceTimeLeft;
+    public float floatingMultiplier;
 
     public float minPosY;
 
@@ -27,7 +28,7 @@ public class FloeScript : MonoBehaviour
 
     Rigidbody body;
     public float returnDamping = 5;
-
+    
     void Start()
     {
         body = GetComponent<Rigidbody>();
@@ -48,7 +49,9 @@ public class FloeScript : MonoBehaviour
 
         if (upForceTimeLeft <= 0 && transform.position.y < 0)
         {
-            body.AddForce(0, upForce, 0);
+            float differenceY = Mathf.Abs(0 - transform.position.y);
+            float floatingPower = differenceY * floatingMultiplier;
+            body.AddForce(0, upForce * floatingPower, 0);
             upForceTimeLeft = upForceTime;
         }
 
