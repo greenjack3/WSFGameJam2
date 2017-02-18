@@ -116,7 +116,7 @@ public class Obstacle : MonoBehaviour
 		body.useGravity = true;
 		Vector3 forceVector = (transform.position - collision.contacts [0].point).normalized;
 		body.AddForce (forceVector * bounceForce, ForceMode.Impulse);
-		StartCoroutine (DisableFloeDestruction ());
+		//StartCoroutine (DisableFloeDestruction ());
 	}
 
 	void OnDisable ()
@@ -124,9 +124,9 @@ public class Obstacle : MonoBehaviour
 		BearScript.PlayerRevived -= OnPlayerRevived;
 	}
 
-	IEnumerator DisableFloeDestruction ()
-	{
-		yield return new WaitForFixedUpdate ();
-		ableToDestroyFloe = false;
-	}
+	//IEnumerator DisableFloeDestruction ()
+	//{
+	//	yield return new WaitForFixedUpdate ();
+	//	ableToDestroyFloe = false;
+	//}
 }

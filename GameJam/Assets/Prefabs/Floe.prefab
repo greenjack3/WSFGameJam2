@@ -82,10 +82,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floeModelPrefab: {fileID: 1110720099874080, guid: 0b49892369e6e41cd9bed1fb8250dd4f,
     type: 2}
-  startChanceToDestroy: 0
+  startChanceToDestroy: 10
   maxChanceToDestroy: 100
-  maxChanceIncrease: 2
-  minChanceIncrease: 0.5
+  maxChanceIncrease: 3
+  minChanceIncrease: 1.5
   maxIncreaseTime: 3
   minIncreaseTime: 1
   upForce: 750
