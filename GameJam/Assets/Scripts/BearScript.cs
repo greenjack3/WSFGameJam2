@@ -10,8 +10,12 @@ public class BearScript : MonoBehaviour {
 	bool playerDead;
 	public float pushForce=3f;
 	public Animator anim;
+	public float jumpHeight = .7f;
+	public float jumpSpeed = 1;
 	public Vector3 startPosition = Vector3.zero;
 	public Rigidbody rb;
+	public FloeScript floe;
+	bool grounded;
 	void OnPlayerFallDown()
 	{
 		if (PlayerFallDown != null) {
@@ -30,22 +34,28 @@ public class BearScript : MonoBehaviour {
 	{
 		PlayerFallDown += BearScript_PlayerFallDown;
 		PlayerRevived += BearScript_PlayerRevived;
+		grounded = true;
 	}
 
 	void BearScript_PlayerRevived ()
 	{
+		StopAllCoroutines ();
 		transform.position = startPosition;
 		rb.velocity = Vector3.zero;
 		rb.useGravity = true;
 		playerDead = false;
+		grounded = true;
 	}
 
 	void BearScript_PlayerFallDown ()
 	{
+		StopAllCoroutines ();
 		playerDead = true;
 		//rb.velocity = Vector3.zero;
 		rb.useGravity = false;
 	}
+
+
 
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -59,10 +69,55 @@ public class BearScript : MonoBehaviour {
 
 	void Update()
 	{
+		
 		if (transform.position.y <=deathHeight) {
 			OnPlayerFallDown ();
 		}
+
+		if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) {
+			return;
+		}
+		grounded = Physics.Raycast (transform.position, Vector3.down, .05f, LayerMask.GetMask ("Ground"));
+		if(Input.GetMouseButtonDown(0) && grounded && floe.nextModel !=null && !playerDead)
+		{
+			Debug.Break ();
+			floe.StopGettingNewFloe ();
+			grounded = false;
+			StartCoroutine (JumpToNextPlatform ());
+		}
 	}
 
+	IEnumerator JumpToNextPlatform ()
+	{
+		Debug.Log ("Jumping");
+		float jumpTarget = transform.position.y + jumpHeight;
+		rb.useGravity = false;
+
+
+		while (transform.position.y <= jumpTarget) {
+			Debug.Log (transform.position.y + " " + jumpTarget);
+			transform.Translate (Vector3.up * Time.deltaTime * jumpSpeed);
+			yield return null;
+			
+		}
+
+		yield return StartCoroutine (floe.MoveNextFloeUp ());
+		Debug.Log ("dropping down again");
+		rb.useGravity = true;
+
+		while (!Physics.Raycast(transform.position,Vector3.down,.05f,LayerMask.GetMask("Ground"))) {
+			Debug.Log ("Waiting For Ground");
+			yield return null;
+		}
+
+		floe.PlatformCenter ();
+
+	}
+
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawRay (transform.position, Vector3.down*.05f);
+	}
 
 }
