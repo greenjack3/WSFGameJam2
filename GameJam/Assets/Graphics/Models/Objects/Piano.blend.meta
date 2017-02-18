@@ -1,15 +1,45 @@
 fileFormatVersion: 2
-guid: 9a4feb19b2e1dc549b986f21328b905e
-timeCreated: 1487403621
+guid: 955d1f11268a9514fa77c38e397e89ae
+timeCreated: 1487427166
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Piano_001
+    100004: Piano_002
+    100006: Piano_003
+    100008: Piano_004
+    100010: Piano_005
+    100012: Piano_006
     400000: //RootNode
+    400002: Piano_001
+    400004: Piano_002
+    400006: Piano_003
+    400008: Piano_004
+    400010: Piano_005
+    400012: Piano_006
     2300000: //RootNode
+    2300002: Piano_001
+    2300004: Piano_002
+    2300006: Piano_003
+    2300008: Piano_004
+    2300010: Piano_005
+    2300012: Piano_006
     3300000: //RootNode
+    3300002: Piano_001
+    3300004: Piano_002
+    3300006: Piano_003
+    3300008: Piano_004
+    3300010: Piano_005
+    3300012: Piano_006
     4300000: Piano
+    4300002: Piano_006
+    4300004: Piano_005
+    4300006: Piano_004
+    4300008: Piano_003
+    4300010: Piano_002
+    4300012: Piano_001
     7400000: Default Take
     9500000: //RootNode
   materials:

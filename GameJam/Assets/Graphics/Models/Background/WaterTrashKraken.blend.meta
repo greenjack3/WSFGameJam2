@@ -1,17 +1,41 @@
 fileFormatVersion: 2
-guid: a4ca88957a82ed34bb19b29214276c60
-timeCreated: 1487422352
+guid: 05eb368d111166c418a4bd9e3458e2d0
+timeCreated: 1487427042
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: LEV_ROCK_S_014
+    100000: Bone
+    100002: Bone_001
+    100004: Bone_002
+    100006: Bone_003
+    100008: Bone_004
+    100010: Bone_005
+    100012: Bone_006
+    100014: Bone_007
+    100016: Bone_008
+    100018: Bone_009
+    100020: Circle
+    100022: Kraken
+    100024: //RootNode
+    400000: Bone
+    400002: Bone_001
+    400004: Bone_002
+    400006: Bone_003
+    400008: Bone_004
+    400010: Bone_005
+    400012: Bone_006
+    400014: Bone_007
+    400016: Bone_008
+    400018: Bone_009
+    400020: Circle
+    400022: Kraken
+    400024: //RootNode
+    4300000: Circle
     7400000: Default Take
+    7400002: ArmatureAction_002
     9500000: //RootNode
+    13700000: Circle
   materials:
     importMaterials: 1
     materialName: 0

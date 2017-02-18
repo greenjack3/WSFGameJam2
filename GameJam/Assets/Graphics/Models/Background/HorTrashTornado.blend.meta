@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a75c562e8c400974b9aecfcb8ecd0401
-timeCreated: 1487426842
+guid: db2d7964a7af75242b9239ebf375a9b3
+timeCreated: 1487426884
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: CLOUD_008
+    4300000: LEV_ROCK_S_014
     7400000: Default Take
     9500000: //RootNode
   materials:
