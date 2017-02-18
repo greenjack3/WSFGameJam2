@@ -28,14 +28,14 @@ public class GraphicTrash : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(transform.forward * Time.deltaTime * forwardSpeed, Space.World);
+		transform.Translate(Vector3.forward * Time.deltaTime * forwardSpeed);
         float c = (Mathf.Abs(maxY) + Mathf.Abs(minY)) / 2;
         transform.position = Vector3.Lerp(transform.position,
 
             new Vector3(transform.position.x,
-            (Time.deltaTime * (c * Mathf.Sin(wobbleSpeed * Time.time) + (c + minY))),
+            ((c * Mathf.Sin(wobbleSpeed * Time.time) + (c + minY))),
             transform.position.z),
-            Mathf.Pow(0.5f, Time.deltaTime));
+            Time.deltaTime);
 
 
     }
