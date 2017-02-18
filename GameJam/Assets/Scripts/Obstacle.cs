@@ -12,6 +12,9 @@ public class Obstacle : MonoBehaviour
     float minTimeToLimp;
 
     bool isMoving;
+
+	bool ableToDestroyFloe;
+
     Rigidbody body;
     public float bounceForce;
 
@@ -21,11 +24,16 @@ public class Obstacle : MonoBehaviour
         Debug.Log("I AM ALIVE!");
         targets = GameObject.FindGameObjectsWithTag("Target");
         speed = Random.Range(minSpeed, maxSpeed);
-
+		ableToDestroyFloe = true;
         isMoving = true;
         body = GetComponent<Rigidbody>();
-
+		BearScript.PlayerRevived += OnPlayerRevived;
         StartCoroutine(fetchTarget());
+    }
+
+    void OnPlayerRevived ()
+    {
+		this.Recycle ();
     }
     IEnumerator fetchTarget()
     {
@@ -47,17 +55,41 @@ public class Obstacle : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+	void OnTriggerEnter(Collider other)
+	{
+		if (ableToDestroyFloe) {
+			return;
+		}
+		if (other.tag == "Ground") {
+			other.GetComponentInParent<FloeScript> ().recentlyCollided = other.transform.name;
+		}
+	}
+
+	void OnCollisionEnter(Collision collision)
     {
-        GoLimp();
-        Vector3 forceVector = (transform.position - other.contacts[0].point).normalized;
+        GoLimp(collision);
+        
         //Debug.DrawRay(transform.position, forceVector,Color.green,10f);
-        body.AddForce(forceVector * bounceForce,ForceMode.Impulse);
+        
     }
 
-    void GoLimp()
+    void GoLimp(Collision collision)
     {
         isMoving = false;
         body.useGravity = true;
+        Vector3 forceVector = (transform.position - collision.contacts[0].point).normalized;
+        body.AddForce(forceVector * bounceForce, ForceMode.Impulse);
+        StartCoroutine (DisableFloeDestruction ());
     }
+
+	void OnDisable()
+	{
+		BearScript.PlayerRevived -= OnPlayerRevived;
+	}
+
+	IEnumerator DisableFloeDestruction ()
+	{
+		yield return new WaitForFixedUpdate ();
+		ableToDestroyFloe = false;
+	}
 }

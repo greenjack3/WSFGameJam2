@@ -43,7 +43,7 @@ public class BearScript : MonoBehaviour {
 	void BearScript_PlayerFallDown ()
 	{
 		playerDead = true;
-		rb.velocity = Vector3.zero;
+		//rb.velocity = Vector3.zero;
 		rb.useGravity = false;
 	}
 

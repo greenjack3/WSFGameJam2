@@ -544,6 +544,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1139750943}
+  - {fileID: 1786258905}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -950,6 +951,12 @@ Prefab:
       propertyPath: anim
       value: 
       objectReference: {fileID: 638096859}
+    - target: {fileID: 136276141603054090, guid: 70703d0130c7640d4be764498902dc78,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: db91f0a26174944c5acff52a7d0edd25,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 33768593471476630, guid: 70703d0130c7640d4be764498902dc78, type: 2}
     - {fileID: 23567875462084462, guid: 70703d0130c7640d4be764498902dc78, type: 2}
@@ -1210,7 +1217,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1360,7 +1367,7 @@ GameObject:
   - component: {fileID: 1139750945}
   - component: {fileID: 1139750944}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Revive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1380,11 +1387,11 @@ RectTransform:
   m_Father: {fileID: 512489298}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 40}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -120}
+  m_SizeDelta: {x: 160, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1139750944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,6 +1403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30dd202a72a5d4e3491752c002279851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 1139750946}
+  text: {fileID: 889842628}
 --- !u!114 &1139750945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1508,6 +1517,11 @@ Prefab:
     - target: {fileID: 4294118949998026, guid: a4866e9357ea943f39817a5370400773, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 65803889287567822, guid: a4866e9357ea943f39817a5370400773,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4866e9357ea943f39817a5370400773, type: 2}
@@ -1907,8 +1921,7 @@ Transform:
   m_Father: {fileID: 1190066101}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!1 &1671921462
-GameObject:
+--- !u!1 &1671921462GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
