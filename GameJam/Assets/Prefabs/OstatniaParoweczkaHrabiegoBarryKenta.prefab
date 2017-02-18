@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   minSpeed: 3
-  bounceForce: 65
+  bounceForce: 70
 --- !u!137 &137955975733282250
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
