@@ -65,7 +65,7 @@ BoxCollider:
   m_GameObject: {fileID: 1791857826953888}
   m_Material: {fileID: 13400000, guid: db91f0a26174944c5acff52a7d0edd25, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 13.05, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -82,6 +82,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floeModelPrefab: {fileID: 1110720099874080, guid: 0b49892369e6e41cd9bed1fb8250dd4f,
     type: 2}
+  startChanceToDestroy: 0
+  maxChanceToDestroy: 100
+  maxChanceIncrease: 2
+  minChanceIncrease: 0.5
+  maxIncreaseTime: 3
+  minIncreaseTime: 1
   upForce: 750
   upForceTime: 0.55
   floatingMultiplier: 50
