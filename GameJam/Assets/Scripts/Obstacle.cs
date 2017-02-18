@@ -67,17 +67,19 @@ public class Obstacle : MonoBehaviour
 
 	void OnCollisionEnter(Collision collision)
     {
-        GoLimp();
-        Vector3 forceVector = (transform.position - collision.contacts[0].point).normalized;
+        GoLimp(collision);
+        
         //Debug.DrawRay(transform.position, forceVector,Color.green,10f);
-        body.AddForce(forceVector * bounceForce,ForceMode.Impulse);
+        
     }
 
-    void GoLimp()
+    void GoLimp(Collision collision)
     {
         isMoving = false;
         body.useGravity = true;
-		StartCoroutine (DisableFloeDestruction ());
+        Vector3 forceVector = (transform.position - collision.contacts[0].point).normalized;
+        body.AddForce(forceVector * bounceForce, ForceMode.Impulse);
+        StartCoroutine (DisableFloeDestruction ());
     }
 
 	void OnDisable()
