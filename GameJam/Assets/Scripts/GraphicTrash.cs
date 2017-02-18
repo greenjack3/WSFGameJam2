@@ -35,7 +35,7 @@ public class GraphicTrash : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("y: " + transform.position.y);
+
         transform.Translate(Vector3.forward * Time.deltaTime * forwardSpeed);
 		float c = (Mathf.Abs(maxY-minY) / 2);
         transform.Translate(Vector3.up * ((c * Mathf.Sin(wobbleSpeed * Time.time) + (c + minY)) * Time.deltaTime));

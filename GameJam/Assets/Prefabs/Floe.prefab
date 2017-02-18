@@ -100,4 +100,6 @@ MonoBehaviour:
   minTime: 0.4
   maxTorqueTime: 0.3
   minTorqueTime: 0.1
+  newFloeAppearanceSpeed: 4
   returnDamping: 0.99
+  interupt: 0
