@@ -154,6 +154,7 @@ public class FloeScript : MonoBehaviour
         StopAllCoroutines();
         Destroy(currentModel);
         currentModel = Instantiate(floeModelPrefab, transform) as GameObject;
+        currentModel.transform.localPosition = Vector3.zero;
         StartCoroutine(CheckForDestruction());
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
