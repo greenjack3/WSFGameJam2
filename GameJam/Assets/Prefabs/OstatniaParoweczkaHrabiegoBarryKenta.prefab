@@ -23,10 +23,10 @@ GameObject:
   - component: {fileID: 95568913343035134}
   - component: {fileID: 114731100898662770}
   - component: {fileID: 54694664615001144}
-  - component: {fileID: 65424278151011448}
   - component: {fileID: 137955975733282250}
   - component: {fileID: 183540209579665146}
-  m_Layer: 10
+  - component: {fileID: 64321821745086794}
+  m_Layer: 0
   m_Name: OstatniaParoweczkaHrabiegoBarryKenta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,18 +68,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65424278151011448
-BoxCollider:
+--- !u!64 &64321821745086794
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1200259458848918}
-  m_Material: {fileID: 13400000, guid: db91f0a26174944c5acff52a7d0edd25, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.399666, y: 1.650932, z: 6.480508}
-  m_Center: {x: 0, y: 0.179519, z: 0.07080805}
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 72249146fd00e0f4380c77fde2bcd9bc, type: 3}
 --- !u!95 &95568913343035134
 Animator:
   serializedVersion: 3
