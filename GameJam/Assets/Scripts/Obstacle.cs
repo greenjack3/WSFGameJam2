@@ -27,8 +27,13 @@ public class Obstacle : MonoBehaviour
 		ableToDestroyFloe = true;
         isMoving = true;
         body = GetComponent<Rigidbody>();
-
+		BearScript.PlayerRevived += OnPlayerRevived;
         StartCoroutine(fetchTarget());
+    }
+
+    void OnPlayerRevived ()
+    {
+		this.Recycle ();
     }
     IEnumerator fetchTarget()
     {
@@ -74,6 +79,11 @@ public class Obstacle : MonoBehaviour
         body.useGravity = true;
 		StartCoroutine (DisableFloeDestruction ());
     }
+
+	void OnDisable()
+	{
+		BearScript.PlayerRevived -= OnPlayerRevived;
+	}
 
 	IEnumerator DisableFloeDestruction ()
 	{

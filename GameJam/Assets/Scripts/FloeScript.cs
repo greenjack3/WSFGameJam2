@@ -55,7 +55,7 @@ public class FloeScript : MonoBehaviour
 		recentlyCollided = "";
 		List<Transform> leftMostObj = new List<Transform> ();
 		List<Transform> rightMostObj = new List<Transform> ();
-		foreach (var item in GetComponentsInChildren<Transform>()) {
+		foreach (var item in currentModel.GetComponentsInChildren<Transform>()) {
 			if (item == transform) {
 				continue;
 			}
@@ -99,6 +99,8 @@ public class FloeScript : MonoBehaviour
 		Destroy (currentModel);
 		currentModel = Instantiate (floeModelPrefab, transform) as GameObject;
 		StartCoroutine (CheckForDestruction ());
+		transform.position = Vector3.zero;
+		transform.rotation = Quaternion.identity;
     }
 
 

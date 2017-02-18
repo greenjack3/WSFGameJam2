@@ -2,16 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ReviveButton : MonoBehaviour,IPointerClickHandler {
-	#region IPointerClickHandler implementation
+	[SerializeField]
+	Image image;
+	[SerializeField]
+	Text text;
+	void Awake()
+	{
+		image.enabled = text.enabled = false;
+		BearScript.PlayerFallDown += () => image.enabled = text.enabled = true;
+	}
 
 	public void OnPointerClick (PointerEventData eventData)
 	{
+		image.enabled = text.enabled = false;
 		BearScript.RevivePlayer ();
 	}
-
-	#endregion
 
 
 
