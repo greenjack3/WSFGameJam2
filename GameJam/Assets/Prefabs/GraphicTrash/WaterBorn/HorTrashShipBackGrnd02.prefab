@@ -93,10 +93,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e9d1d0b0f4f754c98b549df1ce6a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxYdiff: 0.3
-  minYdiff: 0.6
+  maxYdiff: 0
+  minYdiff: 0.3
   maxWobbleSpeed: 0.12
-  minWobbleSpeed: 0.2
+  minWobbleSpeed: 0.18
   maxForwardSpeed: 7
   minForwardSpeed: 5
   underseaFlag: 0

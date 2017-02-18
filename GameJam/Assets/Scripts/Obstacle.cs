@@ -66,7 +66,6 @@ public class Obstacle : MonoBehaviour
 			if (!explode) {
 				this.Recycle ();	
 			}
-            
 		}
 	}
 

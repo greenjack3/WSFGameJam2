@@ -13,7 +13,7 @@ public class FloeScript : MonoBehaviour
     }
 
     GameObject currentModel;
-
+	public GameObject nextModel{ get; private set;}
     public float startChanceToDestroy = 0f;
     public float maxChanceToDestroy = 100f;
     public float maxChanceIncrease;
@@ -40,7 +40,7 @@ public class FloeScript : MonoBehaviour
     public float minTime;
     public float maxTorqueTime;
     public float minTorqueTime;
-
+	public float newFloeAppearanceSpeed = 3f;
     float timeToForce;
     float timeToTorque;
 
@@ -52,6 +52,7 @@ public class FloeScript : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
         upForceTimeLeft = upForceTime;
+		StartCoroutine("GetNewFloe");
         timeToForce = Random.Range(minTime, maxTime);
         timeToTorque = Random.Range(minTorqueTime, maxTorqueTime);
         currentModel = Instantiate(floeModelPrefab, transform) as GameObject;
@@ -149,17 +150,79 @@ public class FloeScript : MonoBehaviour
         }
     }
 
-    void OnPlayerRevived()
+	void ClearNextModel()
+	{
+		Destroy (nextModel);
+		nextModel = null;
+	}
+
+    void OnPlayerRevived ()
     {
+		
         StopAllCoroutines();
         Destroy(currentModel);
+		ClearNextModel ();
         currentModel = Instantiate(floeModelPrefab, transform) as GameObject;
         currentModel.transform.localPosition = Vector3.zero;
         StartCoroutine(CheckForDestruction());
-        transform.position = Vector3.zero;
+		StartCoroutine("GetNewFloe");
+		transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
     }
 
+	public void StopGettingNewFloe ()
+	{
+		StopAllCoroutines ();
+	}
+
+	public void PlatformCenter ()
+	{
+		StartCoroutine (CenterPlatform());
+	}
+
+	IEnumerator GetNewFloe()
+	{
+		nextModel  = Instantiate (floeModelPrefab, transform) as GameObject;
+		nextModel.transform.localPosition = new Vector3 (-14f, -1.05f, -3.84f);
+		nextModel.transform.localRotation = Quaternion.identity;
+		while (nextModel.transform.localPosition.x <=18) {
+//			Debug.Log ("New Floe");
+			nextModel.transform.Translate (Vector3.right * newFloeAppearanceSpeed * Time.deltaTime);
+			yield return null;
+		}
+
+			ClearNextModel ();
+			StartCoroutine ("GetNewFloe");
+
+	}
+
+	public IEnumerator MoveNextFloeUp ()
+	{
+		Debug.Log ("Moving Floe Up");
+
+		Destroy (currentModel);
+		while (nextModel.transform.localPosition.y <0 && nextModel.transform.localPosition.z <0) {
+			Debug.Log ("moving up");	
+			nextModel.transform.localPosition = Vector3.MoveTowards(nextModel.transform.localPosition,
+				new Vector3(nextModel.transform.localPosition.x,0,0),newFloeAppearanceSpeed*Time.deltaTime);
+			yield return null;
+		}
+
+	}
+
+	public IEnumerator CenterPlatform()
+	{
+		currentModel = nextModel;
+		nextModel = null;
+		while (Mathf.Abs(currentModel.transform.localPosition.x) >= 0.2f) {
+			Debug.Log ("New Floe");
+			currentModel.transform.localPosition = Vector3.MoveTowards(currentModel.transform.localPosition,
+				Vector3.zero,newFloeAppearanceSpeed*Time.deltaTime);
+			yield return null;
+		}
+		StartCoroutine ("GetNewFloe");
+
+	}
 
     void Update()
     {
