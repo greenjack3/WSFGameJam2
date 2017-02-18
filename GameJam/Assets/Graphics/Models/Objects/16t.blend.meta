@@ -1,47 +1,15 @@
 fileFormatVersion: 2
-guid: 51d37c80cf0205e47ac0c753b6559d74
-timeCreated: 1487403613
+guid: b927ca255068dba4d9f26902c5d17de0
+timeCreated: 1487403622
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Kra02C
-    100002: Kra02L01
-    100004: Kra02L02
-    100006: Kra02L03
-    100008: Kra02R01
-    100010: Kra02R02
-    100012: Kra02R03
-    100014: //RootNode
-    400000: Kra02C
-    400002: Kra02L01
-    400004: Kra02L02
-    400006: Kra02L03
-    400008: Kra02R01
-    400010: Kra02R02
-    400012: Kra02R03
-    400014: //RootNode
-    2300000: Kra02C
-    2300002: Kra02L01
-    2300004: Kra02L02
-    2300006: Kra02L03
-    2300008: Kra02R01
-    2300010: Kra02R02
-    2300012: Kra02R03
-    3300000: Kra02C
-    3300002: Kra02L01
-    3300004: Kra02L02
-    3300006: Kra02L03
-    3300008: Kra02R01
-    3300010: Kra02R02
-    3300012: Kra02R03
-    4300000: Kra02C
-    4300002: Kra02L01
-    4300004: Kra02L02
-    4300006: Kra02L03
-    4300008: Kra02R01
-    4300010: Kra02R02
-    4300012: Kra02R03
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: 16t
     7400000: Default Take
     9500000: //RootNode
   materials:

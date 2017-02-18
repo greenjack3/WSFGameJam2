@@ -1082,7 +1082,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawners: []
   obstaclePrefabs:
-  - {fileID: 114875155997966750, guid: f45d7e5d0887c7b4e9d9fc393cc1df5e, type: 2}
+  - {fileID: 114327260532714614, guid: 85bc9eb95ad30dc4b8f3c0701cc3c349, type: 2}
+  - {fileID: 114731100898662770, guid: 63f2fcff000e9b14cb548d21318e5b7e, type: 2}
+  - {fileID: 114588743096229106, guid: 34cff5ad151da5f4fb7177dd8807431f, type: 2}
+  - {fileID: 114630272649504586, guid: acd0432cc8f128f4592b2d39021258b1, type: 2}
   timeBetweenSpawns: 1.5
 --- !u!4 &1408411861
 Transform:
