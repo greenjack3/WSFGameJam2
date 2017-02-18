@@ -91,7 +91,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &220010592
+--- !u!1001 &248580051
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -225,7 +225,7 @@ Transform:
   - {fileID: 598527883}
   - {fileID: 1010618515}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &503141787
 GameObject:
@@ -424,8 +424,6 @@ MonoBehaviour:
   minYdiff: 1.5
   maxWobbleSpeed: 4
   minWobbleSpeed: 3
-  decelerationMod: 0.98
-  minDeceleratedSpeed: 2
   maxForwardSpeed: 1
   minForwardSpeed: 1
 --- !u!1 &598527882
@@ -537,7 +535,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 613650753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 2.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1234,61 +1232,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 446960394}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1491425725
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1491425727}
-  - component: {fileID: 1491425726}
-  m_Layer: 0
-  m_Name: TrashSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1491425726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1491425725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 364512a9b38ab85429c9bd498a04b31b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  airborneTrash: []
-  airborneSpawnPoints: []
-  maxAirborneSpawnTimer: 0
-  minAirborneSpawnTimer: 0
-  waterborneTrash: []
-  waterborneSpawnPoints: []
-  maxWaterborneSpawnTimer: 0
-  minWaterborneSpawnTimer: 0
-  underseaTrash: []
-  underseaSpawnPoints: []
-  maxUnderseaSpawnTimer: 0
-  minUnderseaSpawnTimer: 0
---- !u!4 &1491425727
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1491425725}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1190066101}
-  - {fileID: 949224486}
-  - {fileID: 701356216}
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1608731240
 GameObject:
