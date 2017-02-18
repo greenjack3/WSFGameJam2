@@ -16,7 +16,7 @@ public class FloeScript : MonoBehaviour
 
     public float maxTorque;
     public float minTorque;
-
+    
     public float maxTime;
     public float minTime;
     public float maxTorqueTime;
@@ -26,6 +26,7 @@ public class FloeScript : MonoBehaviour
     float timeToTorque;
 
     Rigidbody body;
+    public float returnDamping = 5;
 
     void Start()
     {
@@ -51,15 +52,28 @@ public class FloeScript : MonoBehaviour
             upForceTimeLeft = upForceTime;
         }
 
-        if (timeToTorque <= 0)
+        if (timeToTorque <= 0 )
         {
+            Debug.Log("new torque");
             float torque = Random.Range(minTorque, maxTorque);
-            body.AddTorque(0, 0, torque);
+            body.AddTorque(0, 0, torque, ForceMode.Impulse);
             timeToTorque = Random.Range(minTorqueTime, maxTorqueTime);
+        }
+
+        //        Debug.Log(transform.rotation.eulerAngles.z);
+
+        if (!(transform.rotation.eulerAngles.z <= 1 || transform.rotation.eulerAngles.z >= 359))
+        {
+            Debug.Log("returning to balance");
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity,Time.deltaTime*returnDamping);
+        }
+        else
+        {
+            timeToTorque -= Time.deltaTime;
         }
 
         upForceTimeLeft -= Time.deltaTime;
         timeToForce -= Time.deltaTime;
-        timeToTorque -= Time.deltaTime;
+        
     }
 }

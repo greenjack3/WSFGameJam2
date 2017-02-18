@@ -8,13 +8,21 @@ public class BearScript : MonoBehaviour {
 	public static event Gameplay PlayerRevived;
 	public float deathHeight = -5;
 	bool playerDead;
-	public float topSpeed=3f;
+	public float pushForce=3f;
+
 	public Vector3 startPosition = Vector3.zero;
 	public Rigidbody rb;
 	void OnPlayerFallDown()
 	{
 		if (PlayerFallDown != null) {
 			PlayerFallDown ();
+		}
+	}
+
+	public static void RevivePlayer()
+	{
+		if (PlayerRevived != null) {
+			PlayerRevived ();
 		}
 	}
 
@@ -44,7 +52,8 @@ public class BearScript : MonoBehaviour {
 		if (playerDead) {
 			return;
 		}
-		rb.velocity = new Vector3(Mathf.Lerp(rb.velocity.x,(Input.acceleration.x * topSpeed),Mathf.Pow(0.5f,Time.deltaTime)),rb.velocity.y,rb.velocity.z);
+		Debug.Log (new Vector3 (Input.acceleration.x * pushForce, 0, 0));
+		rb.AddForce (new Vector3(Input.acceleration.x * pushForce,0,0),ForceMode.Acceleration);
 	}
 
 	void Update()
