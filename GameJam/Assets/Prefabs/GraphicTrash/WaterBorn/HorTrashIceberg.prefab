@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4079170457664608}
   - component: {fileID: 33575230411061854}
   - component: {fileID: 23689411125790046}
-  - component: {fileID: 95374760570635604}
   - component: {fileID: 114827718014928110}
   m_Layer: 0
   m_Name: HorTrashIceberg
@@ -38,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1221774743881462}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -81,23 +80,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221774743881462}
   m_Mesh: {fileID: 4300000, guid: e6236eb5080a3714ba389052189e2f19, type: 3}
---- !u!95 &95374760570635604
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1221774743881462}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: e6236eb5080a3714ba389052189e2f19, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114827718014928110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,12 +91,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e9d1d0b0f4f754c98b549df1ce6a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxYdiff: 0
-  minYdiff: 0
-  maxWobbleSpeed: 0
-  minWobbleSpeed: 0
-  maxForwardSpeed: 0
-  minForwardSpeed: 0
+  maxYdiff: 0.1
+  minYdiff: 0.3
+  maxWobbleSpeed: 0.1
+  minWobbleSpeed: 0.15
+  maxForwardSpeed: 4
+  minForwardSpeed: 2
   underseaFlag: 0
   maxLifeTime: 0
   minLifeTime: 0

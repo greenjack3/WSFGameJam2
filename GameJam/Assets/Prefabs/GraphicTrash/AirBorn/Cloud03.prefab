@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4851670647161432}
   - component: {fileID: 33364876278949128}
   - component: {fileID: 23160980181138576}
-  - component: {fileID: 95593118101946940}
   - component: {fileID: 114470443631965618}
   m_Layer: 0
   m_Name: Cloud03
@@ -81,23 +80,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178711605541706}
   m_Mesh: {fileID: 4300000, guid: c505707be164083419b7d34dd6319cad, type: 3}
---- !u!95 &95593118101946940
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1178711605541706}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c505707be164083419b7d34dd6319cad, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114470443631965618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,12 +91,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e9d1d0b0f4f754c98b549df1ce6a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxYdiff: 0
-  minYdiff: 0
+  maxYdiff: 1.1
+  minYdiff: 1.3
   maxWobbleSpeed: 0
   minWobbleSpeed: 0
-  maxForwardSpeed: 0
-  minForwardSpeed: 0
+  maxForwardSpeed: 9
+  minForwardSpeed: 7
   underseaFlag: 0
   maxLifeTime: 0
   minLifeTime: 0

@@ -741,7 +741,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1769581430718962}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -17.31, y: 0, z: 0}
+  m_LocalPosition: {x: -22.1, y: 1.65, z: 9.8}
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 4926342667881964}
@@ -807,6 +807,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   airborneTrash:
   - {fileID: 1778956947764688, guid: 44e88c36656544d4f864207f3123e6f8, type: 2}
+  - {fileID: 1037972358911710, guid: 5b3e4a7028567e645b17922731c36bca, type: 2}
+  - {fileID: 1108522748509230, guid: 6d2c5b6915115404fa126fd0f049d1ae, type: 2}
+  - {fileID: 1178711605541706, guid: 5da5a14f5389e3a40951f2905bac587f, type: 2}
+  - {fileID: 1517277752086204, guid: 0c35d288c90b80b449b52bba577d7dc0, type: 2}
   airborneSpawnPoints:
   - {fileID: 4850222892284342}
   - {fileID: 4598487507386914}
@@ -816,9 +820,13 @@ MonoBehaviour:
   - {fileID: 4167294675305308}
   - {fileID: 4282618849086272}
   - {fileID: 4948953885671990}
-  maxAirborneSpawnTimer: 1
-  minAirborneSpawnTimer: 0.2
-  waterborneTrash: []
+  maxAirborneSpawnTimer: 5
+  minAirborneSpawnTimer: 1
+  waterborneTrash:
+  - {fileID: 1221774743881462, guid: 53e396909fdc9284aa5dde04503293ff, type: 2}
+  - {fileID: 1389130511720984, guid: abf89dde5aab9614d908111573bec9d8, type: 2}
+  - {fileID: 1602860134703016, guid: d36236fb68f55a34093fed87ecf61966, type: 2}
+  - {fileID: 1681489802697982, guid: 245fcffec3c29fc4c9aadfbd77465061, type: 2}
   waterborneSpawnPoints:
   - {fileID: 4063711746611382}
   - {fileID: 4192454844179004}
@@ -828,9 +836,11 @@ MonoBehaviour:
   - {fileID: 4716073002942370}
   - {fileID: 4928974158602904}
   - {fileID: 4608440560105792}
-  maxWaterborneSpawnTimer: 3
-  minWaterborneSpawnTimer: 0.5
-  underseaTrash: []
+  maxWaterborneSpawnTimer: 45
+  minWaterborneSpawnTimer: 15
+  underseaTrash:
+  - {fileID: 1211517370289822, guid: 1097f32db3d4bb14aabba2ca30b15a51, type: 2}
+  - {fileID: 1609116377993036, guid: e7f993f48f363ea47a318eb8ca358a9c, type: 2}
   underseaSpawnPoints:
   - {fileID: 4765874464931922}
   - {fileID: 4524298829155010}
@@ -839,5 +849,5 @@ MonoBehaviour:
   - {fileID: 4589670326904722}
   - {fileID: 4200842924680184}
   - {fileID: 4744390266204514}
-  maxUnderseaSpawnTimer: 5
-  minUnderseaSpawnTimer: 0.7
+  maxUnderseaSpawnTimer: 5000
+  minUnderseaSpawnTimer: 7000
