@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54848298886546112}
   - component: {fileID: 114327260532714614}
   - component: {fileID: 64893830675614058}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Meateor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23519505733610278}
   - component: {fileID: 114875155997966750}
   - component: {fileID: 54867451432493804}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,3 +122,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 3
   minSpeed: 8
+  bounceForce: 0
