@@ -25,6 +25,7 @@ public class GraphicTrash : MonoBehaviour
 
     void OnEnable()
     {
+       
         maxY = transform.position.y + maxYdiff;
         minY = transform.position.y - minYdiff;
         wobbleSpeed = Random.Range(minWobbleSpeed, maxWobbleSpeed);
@@ -34,11 +35,10 @@ public class GraphicTrash : MonoBehaviour
 
     void Update()
     {
-		transform.Translate(Vector3.forward * Time.deltaTime * forwardSpeed);
+
+        transform.Translate(Vector3.forward * Time.deltaTime * forwardSpeed);
 		float c = (Mathf.Abs(maxY-minY) / 2);
-		transform.position = new Vector3 (transform.position.x,
-			((c * Mathf.Sin (wobbleSpeed * Time.time) + (c + minY))),
-			transform.position.z);
+        transform.Translate(Vector3.up * ((c * Mathf.Sin(wobbleSpeed * Time.time) + (c + minY)) * Time.deltaTime));
 
         lifeTime -= Time.deltaTime;
 
@@ -47,7 +47,7 @@ public class GraphicTrash : MonoBehaviour
             transform.Translate(Vector3.up * Time.deltaTime * -wobbleSpeed);
         }
 
-        if (transform.position.x <= -20 || transform.position.x >= 20)
+        if (transform.position.x <= -55 || transform.position.x >= 55)
         {
             this.Recycle();
         }

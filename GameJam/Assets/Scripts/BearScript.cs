@@ -80,7 +80,7 @@ public class BearScript : MonoBehaviour {
 		grounded = Physics.Raycast (transform.position, Vector3.down, .05f, LayerMask.GetMask ("Ground"));
 		if(Input.GetMouseButtonDown(0) && grounded && floe.nextModel !=null && !playerDead)
 		{
-			Debug.Break ();
+			
 			floe.StopGettingNewFloe ();
 			grounded = false;
 			StartCoroutine (JumpToNextPlatform ());

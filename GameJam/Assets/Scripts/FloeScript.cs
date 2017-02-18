@@ -4,15 +4,25 @@ using UnityEngine;
 using System.Linq;
 public class FloeScript : MonoBehaviour
 {
-	public GameObject floeModelPrefab;
+    public GameObject floeModelPrefab;
 
-	public string recentlyCollided {
-		get;
-		set;
-	}
+    public string recentlyCollided
+    {
+        get;
+        set;
+    }
 
-	GameObject currentModel;
-	public GameObject nextModel{ get; private set;} 
+    GameObject currentModel;
+	public GameObject nextModel{ get; private set;}
+    public float startChanceToDestroy = 0f;
+    public float maxChanceToDestroy = 100f;
+    public float maxChanceIncrease;
+    public float minChanceIncrease;
+    public float maxIncreaseTime;
+    public float minIncreaseTime;
+    float chanceToDestroy;
+    float increaseTime;
+
     public float upForce;
     public float upForceTime;
     float upForceTimeLeft;
@@ -25,7 +35,7 @@ public class FloeScript : MonoBehaviour
 
     public float maxTorque;
     public float minTorque;
-    
+
     public float maxTime;
     public float minTime;
     public float maxTorqueTime;
@@ -37,61 +47,108 @@ public class FloeScript : MonoBehaviour
     Rigidbody body;
 
     public float returnDamping = 5;
-    
+
     void Start()
     {
         body = GetComponent<Rigidbody>();
         upForceTimeLeft = upForceTime;
+		StartCoroutine("GetNewFloe");
         timeToForce = Random.Range(minTime, maxTime);
         timeToTorque = Random.Range(minTorqueTime, maxTorqueTime);
-		currentModel = Instantiate (floeModelPrefab, transform) as GameObject;
-		StartCoroutine (CheckForDestruction ());
-		StartCoroutine ("GetNewFloe");
-		BearScript.PlayerRevived += OnPlayerRevived;
+        currentModel = Instantiate(floeModelPrefab, transform) as GameObject;
+        StartCoroutine(CheckForDestruction());
+
+        BearScript.PlayerRevived += OnPlayerRevived;
+
+        chanceToDestroy = startChanceToDestroy;
+        increaseTime = Random.Range(minIncreaseTime, maxIncreaseTime);
+        StartCoroutine(DestroyChanceIncrease());
     }
 
-	IEnumerator CheckForDestruction()
-	{
-		recentlyCollided = "";
-		List<Transform> leftMostObj = new List<Transform> ();
-		List<Transform> rightMostObj = new List<Transform> ();
-		foreach (var item in currentModel.GetComponentsInChildren<Transform>()) {
-			if (item == transform) {
-				continue;
-			}
-			if (item.name.Contains ("L0")) {
-				leftMostObj.Add (item);
-			}
-			if (item.name.Contains ("R0")) {
-				rightMostObj.Add (item);
-			}
-		}
+    IEnumerator DestroyChanceIncrease()
+    {
+        while (true)
+        {
+            increaseTime -= Time.deltaTime;
+            if (increaseTime <= 0 && chanceToDestroy <= maxChanceToDestroy)
+            {
+                chanceToDestroy += Random.Range(minChanceIncrease, maxChanceIncrease);
+                increaseTime = Random.Range(minIncreaseTime, maxIncreaseTime);
+            }
+            if (chanceToDestroy > maxChanceToDestroy)
+            {
+                chanceToDestroy = maxChanceToDestroy;
+            }
+            yield return null;
+        }
+    }
 
-		leftMostObj.Sort(new System.Comparison<Transform>((x,y) => string.Compare(x.name, y.name)));
-		rightMostObj.Sort (new System.Comparison<Transform>((x,y) => string.Compare(x.name, y.name)));
+    IEnumerator CheckForDestruction()
+    {
+        recentlyCollided = "";
+        List<Transform> leftMostObj = new List<Transform>();
+        List<Transform> rightMostObj = new List<Transform>();
+        foreach (var item in currentModel.GetComponentsInChildren<Transform>())
+        {
+            if (item == transform)
+            {
+                continue;
+            }
+            if (item.name.Contains("L0"))
+            {
+                leftMostObj.Add(item);
+            }
+            if (item.name.Contains("R0"))
+            {
+                rightMostObj.Add(item);
+            }
+        }
 
-		while (true) {
-			if (recentlyCollided.Contains ("L0") && leftMostObj.Count > 0) {
-				if (recentlyCollided == leftMostObj.Last ().name) {
-					GameObject obj = leftMostObj.Last ().gameObject;
-					obj.transform.SetParent (null);
-					obj.AddComponent<Rigidbody> ();
-					obj.GetComponent<Collider> ().isTrigger = false;
-					leftMostObj.Remove (obj.transform);
-				}
-			}
-			if (recentlyCollided.Contains ("R0") && rightMostObj.Count>0) {
-				if (recentlyCollided == rightMostObj.Last ().name) {
-					GameObject obj = rightMostObj.Last ().gameObject;
-					obj.AddComponent<Rigidbody> ();
-					obj.transform.SetParent (null);
-					obj.GetComponent<Collider> ().isTrigger = false;
-					rightMostObj.Remove (obj.transform);
-				}
-			}
-			yield return null;
-		}
-	}
+        leftMostObj.Sort(new System.Comparison<Transform>((x, y) => string.Compare(x.name, y.name)));
+        rightMostObj.Sort(new System.Comparison<Transform>((x, y) => string.Compare(x.name, y.name)));
+
+        while (true)
+        {
+            float rngeezus = 0;
+            if (recentlyCollided.Contains("L0") && leftMostObj.Count > 0)
+            {
+                if (recentlyCollided == leftMostObj.Last().name)
+                {
+                    rngeezus = Random.Range(0, 100);
+
+                    if (rngeezus <= chanceToDestroy)
+                    {
+                        GameObject obj = leftMostObj.Last().gameObject;
+                        obj.transform.SetParent(null);
+                        obj.AddComponent<Rigidbody>();
+                        obj.GetComponent<Collider>().isTrigger = false;
+                        leftMostObj.Remove(obj.transform);
+
+                        chanceToDestroy = chanceToDestroy * 0.5f;
+                    }
+                }
+            }
+            if (recentlyCollided.Contains("R0") && rightMostObj.Count > 0)
+            {
+                if (recentlyCollided == rightMostObj.Last().name)
+                {
+                    rngeezus = Random.Range(0, 100);
+
+                    if (rngeezus <= chanceToDestroy)
+                    {
+                        GameObject obj = rightMostObj.Last().gameObject;
+                        obj.AddComponent<Rigidbody>();
+                        obj.transform.SetParent(null);
+                        obj.GetComponent<Collider>().isTrigger = false;
+                        rightMostObj.Remove(obj.transform);
+
+                        chanceToDestroy = chanceToDestroy * 0.5f;
+                    }
+                }
+            }
+            yield return null;
+        }
+    }
 
 	void ClearNextModel()
 	{
@@ -101,14 +158,16 @@ public class FloeScript : MonoBehaviour
 
     void OnPlayerRevived ()
     {
-		StopAllCoroutines ();
-		Destroy (currentModel);
+		
+        StopAllCoroutines();
+        Destroy(currentModel);
 		ClearNextModel ();
-		currentModel = Instantiate (floeModelPrefab, transform) as GameObject;
-		StartCoroutine (CheckForDestruction ());
-		StartCoroutine ("GetNewFloe");
+        currentModel = Instantiate(floeModelPrefab, transform) as GameObject;
+        currentModel.transform.localPosition = Vector3.zero;
+        StartCoroutine(CheckForDestruction());
+		StartCoroutine("GetNewFloe");
 		transform.position = Vector3.zero;
-		transform.rotation = Quaternion.identity;
+        transform.rotation = Quaternion.identity;
     }
 
 	public void StopGettingNewFloe ()
@@ -182,7 +241,7 @@ public class FloeScript : MonoBehaviour
             upForceTimeLeft = upForceTime;
         }
 
-        if (timeToTorque <= 0 )
+        if (timeToTorque <= 0)
         {
             Debug.Log("new torque");
             float torque = Random.Range(minTorque, maxTorque);
@@ -194,8 +253,8 @@ public class FloeScript : MonoBehaviour
 
         if (!(transform.rotation.eulerAngles.z <= 1 || transform.rotation.eulerAngles.z >= 359))
         {
-//            Debug.Log("returning to balance");
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity,Time.deltaTime*returnDamping);
+            //            Debug.Log("returning to balance");
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, Time.deltaTime * returnDamping);
         }
         else
         {
@@ -204,6 +263,6 @@ public class FloeScript : MonoBehaviour
 
         upForceTimeLeft -= Time.deltaTime;
         timeToForce -= Time.deltaTime;
-        
+
     }
 }
