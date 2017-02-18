@@ -9,12 +9,17 @@ public class Obstacle : MonoBehaviour
     float speed;
 
     GameObject[] targets;
-
     void OnEnable()
     {
+        Debug.Log("I AM ALIVE!");
         targets = GameObject.FindGameObjectsWithTag("Target");
         speed = Random.Range(minSpeed, maxSpeed);
 
+        StartCoroutine(fetchTarget());
+    }
+    IEnumerator fetchTarget()
+    {
+        yield return null;
         int selector = Random.Range(0, targets.Length);
         Transform target = targets[selector].transform;
         transform.LookAt(target);
