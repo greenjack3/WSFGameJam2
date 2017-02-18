@@ -11,7 +11,7 @@ public class GraphicTrash : MonoBehaviour
     float minY;
     public float maxWobbleSpeed;
     public float minWobbleSpeed;
-
+    
     public float maxForwardSpeed;
     public float minForwardSpeed;
 
@@ -29,6 +29,14 @@ public class GraphicTrash : MonoBehaviour
     void Update()
     {
         transform.Translate(transform.forward * Time.deltaTime * forwardSpeed, Space.World);
-        transform.Translate(transform.up * Time.deltaTime * wobbleSpeed * Mathf.Sin(Time.timeSinceLevelLoad));
+        float c = (Mathf.Abs(maxY) + Mathf.Abs(minY)) / 2;
+        transform.position = Vector3.Lerp(transform.position,
+
+            new Vector3(transform.position.x,
+            (Time.deltaTime * (c * Mathf.Sin(wobbleSpeed * Time.time) + (c + minY))),
+            transform.position.z),
+            Mathf.Pow(0.5f, Time.deltaTime));
+
+
     }
 }
