@@ -29,13 +29,10 @@ public class GraphicTrash : MonoBehaviour
     void Update()
     {
 		transform.Translate(Vector3.forward * Time.deltaTime * forwardSpeed);
-        float c = (Mathf.Abs(maxY) + Mathf.Abs(minY)) / 2;
-        transform.position = Vector3.Lerp(transform.position,
-
-            new Vector3(transform.position.x,
-            ((c * Mathf.Sin(wobbleSpeed * Time.time) + (c + minY))),
-            transform.position.z),
-            Time.deltaTime);
+		float c = (Mathf.Abs(maxY-minY) / 2);
+		transform.position = new Vector3 (transform.position.x,
+			((c * Mathf.Sin (wobbleSpeed * Time.time) + (c + minY))),
+			transform.position.z);
 
 
     }
