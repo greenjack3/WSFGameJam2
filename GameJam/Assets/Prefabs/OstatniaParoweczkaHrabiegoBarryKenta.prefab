@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 65424278151011448}
   - component: {fileID: 137955975733282250}
   - component: {fileID: 183540209579665146}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: OstatniaParoweczkaHrabiegoBarryKenta
   m_TagString: Untagged
   m_Icon: {fileID: 0}

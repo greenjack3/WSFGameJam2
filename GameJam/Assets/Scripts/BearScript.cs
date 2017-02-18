@@ -9,7 +9,7 @@ public class BearScript : MonoBehaviour {
 	public float deathHeight = -5;
 	bool playerDead;
 	public float pushForce=3f;
-
+	public Animator anim;
 	public Vector3 startPosition = Vector3.zero;
 	public Rigidbody rb;
 	void OnPlayerFallDown()
@@ -53,6 +53,8 @@ public class BearScript : MonoBehaviour {
 			return;
 		}
 		rb.AddForce (new Vector3(Input.acceleration.x * pushForce,0,0),ForceMode.Acceleration);
+		anim.SetBool ("IsMoving",Mathf.Abs (Input.acceleration.x) > 0.001f);
+		anim.SetFloat ("MovementSpeed",-Input.acceleration.x);
 	}
 
 	void Update()

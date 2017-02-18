@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65812393924227542}
   - component: {fileID: 54077299494247694}
   - component: {fileID: 114588743096229106}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Piano
   m_TagString: Untagged
   m_Icon: {fileID: 0}
