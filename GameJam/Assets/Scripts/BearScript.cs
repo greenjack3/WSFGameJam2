@@ -52,7 +52,6 @@ public class BearScript : MonoBehaviour {
 		if (playerDead) {
 			return;
 		}
-		Debug.Log (new Vector3 (Input.acceleration.x * pushForce, 0, 0));
 		rb.AddForce (new Vector3(Input.acceleration.x * pushForce,0,0),ForceMode.Acceleration);
 	}
 

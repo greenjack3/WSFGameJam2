@@ -44,6 +44,7 @@ public class SpawnManager : Singleton<SpawnManager> {
 	void Spawn()
 	{
 		if (obstaclePrefabs.Length == 0 || spawners.Count == 0) {
+			Debug.LogWarning ("!!!NO OBSTACLES OR SPAWNERS!!!");
 			return;
 		}
 		Obstacle nextObstacle = obstaclePrefabs [Random.Range (0, obstaclePrefabs.Length)];
