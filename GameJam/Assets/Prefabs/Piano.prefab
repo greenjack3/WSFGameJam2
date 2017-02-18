@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33971626075898262}
   - component: {fileID: 23617659055198414}
   - component: {fileID: 95605903637537840}
-  - component: {fileID: 65812393924227542}
   - component: {fileID: 54077299494247694}
   - component: {fileID: 114588743096229106}
+  - component: {fileID: 64934737424753004}
   m_Layer: 0
   m_Name: Piano
   m_TagString: Untagged
@@ -98,18 +98,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65812393924227542
-BoxCollider:
+--- !u!64 &64934737424753004
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1643967041218644}
-  m_Material: {fileID: 13400000, guid: db91f0a26174944c5acff52a7d0edd25, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.490837, y: 1.414836, z: 2.940351}
-  m_Center: {x: -0.02492249, y: -0.375305, z: -0.2020315}
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 9a4feb19b2e1dc549b986f21328b905e, type: 3}
 --- !u!95 &95605903637537840
 Animator:
   serializedVersion: 3
