@@ -57,7 +57,7 @@ public class Obstacle : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (ableToDestroyFloe) {
+		if (!ableToDestroyFloe) {
 			return;
 		}
 		if (other.tag == "Ground") {
