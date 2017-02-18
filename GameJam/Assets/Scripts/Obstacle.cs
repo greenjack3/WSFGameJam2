@@ -12,6 +12,9 @@ public class Obstacle : MonoBehaviour
     float minTimeToLimp;
 
     bool isMoving;
+
+	bool ableToDestroyFloe;
+
     Rigidbody body;
     public float bounceForce;
 
@@ -21,7 +24,7 @@ public class Obstacle : MonoBehaviour
         Debug.Log("I AM ALIVE!");
         targets = GameObject.FindGameObjectsWithTag("Target");
         speed = Random.Range(minSpeed, maxSpeed);
-
+		ableToDestroyFloe = true;
         isMoving = true;
         body = GetComponent<Rigidbody>();
 
@@ -47,10 +50,20 @@ public class Obstacle : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+	void OnTriggerEnter(Collider other)
+	{
+		if (ableToDestroyFloe) {
+			return;
+		}
+		if (other.tag == "Ground") {
+			other.GetComponentInParent<FloeScript> ().recentlyCollided = other.transform.name;
+		}
+	}
+
+	void OnCollisionEnter(Collision collision)
     {
         GoLimp();
-        Vector3 forceVector = (transform.position - other.contacts[0].point).normalized;
+        Vector3 forceVector = (transform.position - collision.contacts[0].point).normalized;
         //Debug.DrawRay(transform.position, forceVector,Color.green,10f);
         body.AddForce(forceVector * bounceForce,ForceMode.Impulse);
     }
@@ -59,5 +72,12 @@ public class Obstacle : MonoBehaviour
     {
         isMoving = false;
         body.useGravity = true;
+		StartCoroutine (DisableFloeDestruction ());
     }
+
+	IEnumerator DisableFloeDestruction ()
+	{
+		yield return new WaitForFixedUpdate ();
+		ableToDestroyFloe = false;
+	}
 }

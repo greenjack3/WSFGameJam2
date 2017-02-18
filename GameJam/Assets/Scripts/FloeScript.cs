@@ -1,9 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class FloeScript : MonoBehaviour
 {
+	public GameObject floeModelPrefab;
+
+	public string recentlyCollided {
+		get;
+		set;
+	}
+
+	GameObject currentModel;
 
     public float upForce;
     public float upForceTime;
@@ -27,6 +35,7 @@ public class FloeScript : MonoBehaviour
     float timeToTorque;
 
     Rigidbody body;
+
     public float returnDamping = 5;
     
     void Start()
@@ -35,6 +44,61 @@ public class FloeScript : MonoBehaviour
         upForceTimeLeft = upForceTime;
         timeToForce = Random.Range(minTime, maxTime);
         timeToTorque = Random.Range(minTorqueTime, maxTorqueTime);
+		currentModel = Instantiate (floeModelPrefab, transform) as GameObject;
+		StartCoroutine (CheckForDestruction ());
+
+		BearScript.PlayerRevived += OnPlayerRevived;
+    }
+
+	IEnumerator CheckForDestruction()
+	{
+		recentlyCollided = "";
+		List<Transform> leftMostObj = new List<Transform> ();
+		List<Transform> rightMostObj = new List<Transform> ();
+		foreach (var item in GetComponentsInChildren<Transform>()) {
+			if (item == transform) {
+				continue;
+			}
+			if (item.name.Contains ("L0")) {
+				leftMostObj.Add (item);
+			}
+			if (item.name.Contains ("R0")) {
+				rightMostObj.Add (item);
+			}
+		}
+
+		leftMostObj.Sort(new System.Comparison<Transform>((x,y) => string.Compare(x.name, y.name)));
+		rightMostObj.Sort (new System.Comparison<Transform>((x,y) => string.Compare(x.name, y.name)));
+
+		while (true) {
+			if (recentlyCollided.Contains ("L0") && leftMostObj.Count > 0) {
+				if (recentlyCollided == leftMostObj.Last ().name) {
+					GameObject obj = leftMostObj.Last ().gameObject;
+					obj.transform.SetParent (null);
+					obj.AddComponent<Rigidbody> ();
+					obj.GetComponent<Collider> ().isTrigger = false;
+					leftMostObj.Remove (obj.transform);
+				}
+			}
+			if (recentlyCollided.Contains ("R0") && rightMostObj.Count>0) {
+				if (recentlyCollided == rightMostObj.Last ().name) {
+					GameObject obj = rightMostObj.Last ().gameObject;
+					obj.AddComponent<Rigidbody> ();
+					obj.transform.SetParent (null);
+					obj.GetComponent<Collider> ().isTrigger = false;
+					rightMostObj.Remove (obj.transform);
+				}
+			}
+			yield return null;
+		}
+	}
+
+    void OnPlayerRevived ()
+    {
+		StopAllCoroutines ();
+		Destroy (currentModel);
+		currentModel = Instantiate (floeModelPrefab, transform) as GameObject;
+		StartCoroutine (CheckForDestruction ());
     }
 
 
@@ -67,7 +131,7 @@ public class FloeScript : MonoBehaviour
 
         if (!(transform.rotation.eulerAngles.z <= 1 || transform.rotation.eulerAngles.z >= 359))
         {
-            Debug.Log("returning to balance");
+//            Debug.Log("returning to balance");
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity,Time.deltaTime*returnDamping);
         }
         else
