@@ -142,4 +142,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   minSpeed: 3
-  bounceForce: 67
+  bounceForce: 72
