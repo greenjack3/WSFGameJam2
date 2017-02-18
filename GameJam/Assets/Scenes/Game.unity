@@ -616,6 +616,46 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4063711746611382, guid: 52796314d7a8943ac8efbf7149192566, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 9.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4063711746611382, guid: 52796314d7a8943ac8efbf7149192566, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192454844179004, guid: 52796314d7a8943ac8efbf7149192566, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 5.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863423877786504, guid: 52796314d7a8943ac8efbf7149192566, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 6.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4328235826582254, guid: 52796314d7a8943ac8efbf7149192566, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4565973281941640, guid: 52796314d7a8943ac8efbf7149192566, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 9.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716073002942370, guid: 52796314d7a8943ac8efbf7149192566, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 13.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716073002942370, guid: 52796314d7a8943ac8efbf7149192566, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928974158602904, guid: 52796314d7a8943ac8efbf7149192566, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 12.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608440560105792, guid: 52796314d7a8943ac8efbf7149192566, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 27.9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52796314d7a8943ac8efbf7149192566, type: 2}
   m_IsPrefabParent: 0
@@ -1478,7 +1518,7 @@ MonoBehaviour:
   - {fileID: 114731100898662770, guid: 63f2fcff000e9b14cb548d21318e5b7e, type: 2}
   - {fileID: 114588743096229106, guid: 34cff5ad151da5f4fb7177dd8807431f, type: 2}
   - {fileID: 114630272649504586, guid: acd0432cc8f128f4592b2d39021258b1, type: 2}
-  timeBetweenSpawns: 1.5
+  timeBetweenSpawns: 1.6
 --- !u!4 &1408411861
 Transform:
   m_ObjectHideFlags: 0

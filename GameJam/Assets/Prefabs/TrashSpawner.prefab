@@ -820,8 +820,8 @@ MonoBehaviour:
   - {fileID: 4167294675305308}
   - {fileID: 4282618849086272}
   - {fileID: 4948953885671990}
-  maxAirborneSpawnTimer: 5
-  minAirborneSpawnTimer: 1
+  maxAirborneSpawnTimer: 5.7
+  minAirborneSpawnTimer: 1.4
   waterborneTrash:
   - {fileID: 1221774743881462, guid: 53e396909fdc9284aa5dde04503293ff, type: 2}
   - {fileID: 1389130511720984, guid: abf89dde5aab9614d908111573bec9d8, type: 2}
@@ -840,7 +840,6 @@ MonoBehaviour:
   minWaterborneSpawnTimer: 15
   underseaTrash:
   - {fileID: 1211517370289822, guid: 1097f32db3d4bb14aabba2ca30b15a51, type: 2}
-  - {fileID: 1609116377993036, guid: e7f993f48f363ea47a318eb8ca358a9c, type: 2}
   underseaSpawnPoints:
   - {fileID: 4765874464931922}
   - {fileID: 4524298829155010}
@@ -849,5 +848,5 @@ MonoBehaviour:
   - {fileID: 4589670326904722}
   - {fileID: 4200842924680184}
   - {fileID: 4744390266204514}
-  maxUnderseaSpawnTimer: 5000
-  minUnderseaSpawnTimer: 7000
+  maxUnderseaSpawnTimer: 90
+  minUnderseaSpawnTimer: 35
