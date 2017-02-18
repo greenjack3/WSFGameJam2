@@ -1,13 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
+public class CustomAudioClip
+{
+	public float volume;
+	public AudioClip clip;
 
+}
 public class Obstacle : MonoBehaviour
 {
+	public CustomAudioClip[] firstImpactClips;
+	public CustomAudioClip[] laterImpactClips;
 	public float maxSpeed;
 	public float minSpeed;
 	float speed;
-
+	public AudioSource source;
 	float maxTimeToLimp;
 	float minTimeToLimp;
 
@@ -81,6 +89,21 @@ public class Obstacle : MonoBehaviour
 
 	void OnCollisionEnter (Collision collision)
 	{
+		if (isMoving) {
+			if (!source.isPlaying) {
+				CustomAudioClip cp = firstImpactClips [Random.Range (0, firstImpactClips.Length)];
+				source.clip = cp.clip;
+				source.volume = cp.volume;
+				source.Play ();
+			}
+		} else {
+			if (!source.isPlaying) {
+				CustomAudioClip cp = laterImpactClips [Random.Range (0, firstImpactClips.Length)];
+				source.clip = cp.clip;
+				source.volume = cp.volume;
+				source.Play ();
+			}
+		}
 		if (explode) {
 			foreach (var item in explosionObjs) {
 				item.transform.SetParent (null);

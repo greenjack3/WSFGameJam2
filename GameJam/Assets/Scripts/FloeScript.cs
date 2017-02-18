@@ -45,11 +45,13 @@ public class FloeScript : MonoBehaviour
     float timeToTorque;
 
     Rigidbody body;
-
+	public CustomAudioClip[] clips;
+	public AudioSource source;
     public float returnDamping = 5;
 
     void Start()
     {
+		
         body = GetComponent<Rigidbody>();
         upForceTimeLeft = upForceTime;
 		StartCoroutine("GetNewFloe");
@@ -123,7 +125,10 @@ public class FloeScript : MonoBehaviour
                         obj.AddComponent<Rigidbody>();
                         obj.GetComponent<Collider>().isTrigger = false;
                         leftMostObj.Remove(obj.transform);
-
+						CustomAudioClip cp = clips [Random.Range (0, clips.Length)];
+						source.clip = cp.clip;
+						source.volume = cp.volume;
+						source.Play ();
                         chanceToDestroy = chanceToDestroy * 0.5f;
                     }
                 }
@@ -141,7 +146,10 @@ public class FloeScript : MonoBehaviour
                         obj.transform.SetParent(null);
                         obj.GetComponent<Collider>().isTrigger = false;
                         rightMostObj.Remove(obj.transform);
-
+						CustomAudioClip cp = clips [Random.Range (0, clips.Length)];
+						source.clip = cp.clip;
+						source.volume = cp.volume;
+						source.Play ();
                         chanceToDestroy = chanceToDestroy * 0.5f;
                     }
                 }

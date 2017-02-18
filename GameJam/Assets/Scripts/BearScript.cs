@@ -16,6 +16,9 @@ public class BearScript : MonoBehaviour {
 	public Rigidbody rb;
 	public FloeScript floe;
 	bool grounded;
+	public CustomAudioClip deathSound;
+	public CustomAudioClip[] changeSideSound;
+	public AudioSource source;
 	void OnPlayerFallDown()
 	{
 		if (PlayerFallDown != null) {
@@ -49,6 +52,10 @@ public class BearScript : MonoBehaviour {
 
 	void BearScript_PlayerFallDown ()
 	{
+		
+		source.clip = deathSound.clip;
+		source.volume = deathSound.volume;
+		source.Play ();
 		StopAllCoroutines ();
 		playerDead = true;
 		//rb.velocity = Vector3.zero;
@@ -56,21 +63,33 @@ public class BearScript : MonoBehaviour {
 	}
 
 
-
+	float lastFrameInput;
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (playerDead) {
 			return;
 		}
+		if(Mathf.Sign(Input.acceleration.x) != lastFrameInput)
+		{
+			if (!source.isPlaying) {
+				CustomAudioClip cp = changeSideSound [Random.Range (0, changeSideSound.Length)];
+				source.clip = cp.clip;
+				source.volume = cp.volume;
+				source.Play ();
+			}
+		}
+
+
 		rb.AddForce (new Vector3(Input.acceleration.x * pushForce,0,0),ForceMode.Acceleration);
 		anim.SetBool ("IsMoving",Mathf.Abs (Input.acceleration.x) > 0.001f);
 		anim.SetFloat ("MovementSpeed",-Input.acceleration.x);
+		lastFrameInput = Mathf.Sign(Input.acceleration.x);
 	}
 
 	void Update()
 	{
 		
-		if (transform.position.y <=deathHeight) {
+		if (transform.position.y <=deathHeight && !playerDead) {
 			OnPlayerFallDown ();
 		}
 
