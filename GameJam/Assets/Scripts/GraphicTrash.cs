@@ -47,7 +47,7 @@ public class GraphicTrash : MonoBehaviour
             transform.Translate(Vector3.up * Time.deltaTime * -wobbleSpeed);
         }
 
-        if (transform.position.x <= -20 || transform.position.x >= 20)
+        if (transform.position.x <= -55 || transform.position.x >= 55)
         {
             this.Recycle();
         }
