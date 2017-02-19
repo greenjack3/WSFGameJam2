@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxYdiff: 0
-  minYdiff: 0.3
+  minYdiff: 0.2
   maxWobbleSpeed: 0.12
   minWobbleSpeed: 0.18
   maxForwardSpeed: 7

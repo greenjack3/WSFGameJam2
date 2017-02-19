@@ -191,7 +191,7 @@ public class FloeScript : MonoBehaviour
 	IEnumerator GetNewFloe()
 	{
 		nextModel  = Instantiate (floeModelPrefab, transform) as GameObject;
-		nextModel.transform.localPosition = new Vector3 (-14f, -1.05f, -3.84f);
+		nextModel.transform.localPosition = new Vector3 (-14f, -0.45f, -3.84f);
 		nextModel.transform.localRotation = Quaternion.identity;
 		while (nextModel.transform.localPosition.x <=18) {
 //			Debug.Log ("New Floe");

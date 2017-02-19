@@ -425,7 +425,7 @@ MonoBehaviour:
   maxForwardSpeed: 0
   minForwardSpeed: 0
   underseaFlag: 1
-  maxLifeTime: 1
+  maxLifeTime: 0.5
   minLifeTime: 0.2
 --- !u!137 &137770563030792984
 SkinnedMeshRenderer:
