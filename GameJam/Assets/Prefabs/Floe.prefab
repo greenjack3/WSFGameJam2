@@ -169,7 +169,7 @@ MonoBehaviour:
   minChanceIncrease: 2
   maxIncreaseTime: 2.75
   minIncreaseTime: 0.85
-  cutChance: 45
+  cutChance: 20
   upForce: 750
   upForceTime: 0.55
   floatingMultiplier: 50
