@@ -20,6 +20,7 @@ public class FloeScript : MonoBehaviour
     public float minChanceIncrease;
     public float maxIncreaseTime;
     public float minIncreaseTime;
+    public float cutChance = 0.3f;
     float chanceToDestroy;
     float increaseTime;
 
@@ -129,7 +130,7 @@ public class FloeScript : MonoBehaviour
 						source.clip = cp.clip;
 						source.volume = cp.volume;
 						source.Play ();
-                        chanceToDestroy = chanceToDestroy * 0.5f;
+                        chanceToDestroy = chanceToDestroy * cutChance;
                     }
                 }
             }
@@ -150,7 +151,7 @@ public class FloeScript : MonoBehaviour
 						source.clip = cp.clip;
 						source.volume = cp.volume;
 						source.Play ();
-                        chanceToDestroy = chanceToDestroy * 0.5f;
+                        chanceToDestroy = chanceToDestroy * cutChance;
                     }
                 }
             }
