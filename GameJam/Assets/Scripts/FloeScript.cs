@@ -274,4 +274,9 @@ public class FloeScript : MonoBehaviour
         timeToForce -= Time.deltaTime;
 
     }
+
+	void OnDisable()
+	{
+		BearScript.PlayerRevived -= OnPlayerRevived;
+	}
 }
