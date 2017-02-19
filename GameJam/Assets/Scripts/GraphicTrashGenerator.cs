@@ -21,16 +21,17 @@ public class GraphicTrashGenerator : Singleton<GraphicTrashGenerator> {
 
     protected override void Awake ()
     {
+		
         base.Awake();
 
-        BearScript.PlayerRevived += OnPlayerRevived;
+        
 
         StartCoroutine(AirborneSpawning());
         StartCoroutine(WaterborneSpawning());
         StartCoroutine(UnderseaSpawning());
     }
 
-    private void OnPlayerRevived()
+	public void OnPlayerRevived()
     {
         StopAllCoroutines();
 
@@ -118,5 +119,7 @@ public class GraphicTrashGenerator : Singleton<GraphicTrashGenerator> {
         GameObject spawnedTrash = underseaTrash[Random.Range(0, underseaTrash.Length)];
         int selector = Random.Range(0, underseaSpawnPoints.Length);
         spawnedTrash.Spawn(underseaSpawnPoints[selector].position, underseaSpawnPoints[selector].rotation);
-    }    
+    } 
+
+
 }
