@@ -97,7 +97,7 @@ public class BearScript : MonoBehaviour {
 		if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) {
 			return;
 		}
-		grounded = Physics.Raycast (transform.position, Vector3.down, .05f, LayerMask.GetMask ("Ground"));
+		grounded = Physics.Raycast (transform.position, Vector3.down, .2f, LayerMask.GetMask ("Ground"));
 		if(Input.GetMouseButtonDown(0) && grounded && floe.nextModel !=null && !playerDead)
 		{
 			
@@ -125,7 +125,7 @@ public class BearScript : MonoBehaviour {
 		Debug.Log ("dropping down again");
 		rb.useGravity = true;
 
-		while (!Physics.Raycast(transform.position,Vector3.down,.05f,LayerMask.GetMask("Ground"))) {
+		while (!Physics.Raycast(transform.position,Vector3.down,.2f,LayerMask.GetMask("Ground"))) {
 			Debug.Log ("Waiting For Ground");
 			yield return null;
 		}
@@ -137,7 +137,7 @@ public class BearScript : MonoBehaviour {
 	void OnDrawGizmos()
 	{
 		Gizmos.color = Color.red;
-		Gizmos.DrawRay (transform.position, Vector3.down*.05f);
+		Gizmos.DrawRay (transform.position, Vector3.down*.2f);
 	}
 
 }

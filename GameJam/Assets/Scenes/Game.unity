@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4510548, g: 0.4995541, b: 0.5670255, a: 1}
+  m_IndirectSpecularColor: {r: 0.45105445, g: 0.49955368, b: 0.5670252, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1150,7 +1150,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4797499612631976, guid: 70703d0130c7640d4be764498902dc78, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.79
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4797499612631976, guid: 70703d0130c7640d4be764498902dc78, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1180,29 +1180,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1744690139371866, guid: 70703d0130c7640d4be764498902dc78, type: 2}
-      propertyPath: m_Name
-      value: Bear
-      objectReference: {fileID: 0}
     - target: {fileID: 114810654306607054, guid: 70703d0130c7640d4be764498902dc78,
         type: 2}
       propertyPath: floe
       value: 
       objectReference: {fileID: 1786567753}
-    - target: {fileID: 82316381379238492, guid: 70703d0130c7640d4be764498902dc78,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 82316381379238492, guid: 70703d0130c7640d4be764498902dc78,
-        type: 2}
-      propertyPath: Mute
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82316381379238492, guid: 70703d0130c7640d4be764498902dc78,
-        type: 2}
-      propertyPath: BypassListenerEffects
-      value: 0
+    - target: {fileID: 1744690139371866, guid: 70703d0130c7640d4be764498902dc78, type: 2}
+      propertyPath: m_Name
+      value: Bear
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70703d0130c7640d4be764498902dc78, type: 2}
