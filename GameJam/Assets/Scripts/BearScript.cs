@@ -42,6 +42,7 @@ public class BearScript : MonoBehaviour {
 
 	void BearScript_PlayerRevived ()
 	{
+		GraphicTrashGenerator.Instance.OnPlayerRevived ();
 		StopAllCoroutines ();
 		transform.position = startPosition;
 		rb.velocity = Vector3.zero;

@@ -795,7 +795,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 202e1703bd97a4116802eefb68ddf914, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -915,7 +915,7 @@ MonoBehaviour:
   pushForce: 30
   anim: {fileID: 95510547846989042}
   jumpHeight: 0.7
-  jumpSpeed: 1
+  jumpSpeed: 3
   startPosition: {x: 0, y: 2, z: 0}
   rb: {fileID: 54406050511266782}
   floe: {fileID: 0}
