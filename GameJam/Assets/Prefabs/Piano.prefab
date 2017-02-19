@@ -757,7 +757,7 @@ MonoBehaviour:
   minSpeed: 3
   source: {fileID: 82446914431521198}
   explode: 1
-  explosionForce: 10
+  explosionForce: 5
   explosionObjs:
   - {fileID: 1234582884066946}
   - {fileID: 1382509738390712}
